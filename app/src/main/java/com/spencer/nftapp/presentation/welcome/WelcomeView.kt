@@ -1,16 +1,21 @@
 package com.spencer.nftapp.presentation.welcome
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -28,6 +33,7 @@ import com.spencer.nftapp.presentation.main.Login
 import com.spencer.nftapp.presentation.ui.theme.Blue
 import com.spencer.nftapp.presentation.ui.theme.Gray
 import com.spencer.nftapp.presentation.ui.theme.LegerBlue
+import kotlinx.coroutines.launch
 
 @Composable
 fun dotComponent(isActive:Boolean
@@ -50,6 +56,7 @@ fun WelcomeView(
     welcomeViewModel: WelcomeViewModel = hiltViewModel()
 ) {
     val state = rememberPagerState()
+    val scope = rememberCoroutineScope()
     val image = remember{
         mutableStateOf(R.drawable.intro1)
     }
@@ -79,7 +86,7 @@ fun WelcomeView(
                 Spacer(modifier = Modifier.width(5.dp))
                 dotComponent(isActive = state.currentPage>=1)
                 Spacer(modifier = Modifier.width(5.dp))
-                dotComponent(isActive = state.currentPage>=2)
+                dotComponent(isActive = state.currentPage >= 2)
 
             }
         }
@@ -91,12 +98,13 @@ fun WelcomeView(
         ) {
 
 
+            HorizontalPager(count = welcomeViewModel.slidesImage.size,
 
-            HorizontalPager(count = welcomeViewModel.slidesImages.size,
                 state = state, modifier = Modifier.fillMaxWidth()) { page->
-                image.value = welcomeViewModel.slidesImages[page]
+                Log.e("page","CURRENT PAGE: $page")
+                //image.value = welcomeViewModel.slidesImage[page]
 
-                Image(painter = painterResource(image.value) ,
+                Image(painter = painterResource(welcomeViewModel.slidesImage[state.currentPage]) ,
                     contentDescription = "Intro 1", modifier = Modifier
                         .width(200.dp)
                         .height(200.dp)
@@ -107,7 +115,7 @@ fun WelcomeView(
 
 
             Spacer(modifier = Modifier.height(80.dp))
-            Text(text = "Create Collects Timeless Artworks",
+            Text(text = welcomeViewModel.titles[state.currentPage],
                 fontSize = 24.sp,
                 fontWeight = FontWeight.W700,
                 color = Color.Black,
@@ -116,7 +124,7 @@ fun WelcomeView(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            Text(text = "The world’s largest digital marketplace for crypto collectibles and non-fungible tokens. Buy, sell, and discover exclusive digital items.",
+            Text(text = welcomeViewModel.descriptions[state.currentPage],
                 fontSize = 14.sp,
                 fontWeight = FontWeight.W400,
                 color = Gray,
@@ -125,8 +133,16 @@ fun WelcomeView(
 
             Spacer(modifier = Modifier.height(50.dp))
 
-            CustomFilledButton(text = "Next",
+            CustomFilledButton(text = if (state.currentPage == 2)"Get Started" else "Next",
                 onClick = {
+                    scope.launch {
+                        if (state.currentPage < 2) {
+                            state.scrollToPage(state.currentPage+1)
+                        } else {
+                            navController.navigate(Login.route)
+                        }
+
+                    }
 
                 })
 

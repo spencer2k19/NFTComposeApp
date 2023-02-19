@@ -9,8 +9,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.unit.dp
+import com.spencer.nftapp.presentation.ui.theme.Blue
 
 @Composable
 fun CustomFilledButton(
@@ -23,6 +23,7 @@ fun CustomFilledButton(
 
     Button(
         onClick = onClick,
+
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp)

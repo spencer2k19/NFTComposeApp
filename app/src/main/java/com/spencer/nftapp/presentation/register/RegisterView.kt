@@ -4,10 +4,9 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
@@ -32,177 +31,200 @@ import com.spencer.nftapp.presentation.ui.theme.Gray
 fun RegisterView(
     navController: NavController
 ) {
-    var textUsername by remember { mutableStateOf("") }
-    var textEmail by remember { mutableStateOf("") }
-    var textPassword by remember {
-        mutableStateOf("")
-    }
+   Scaffold(
+       topBar = {
 
-    Column(
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
+           TopAppBar(
 
-            .padding(
-                vertical = 20.dp,
-                horizontal = 20.dp
-            )
+               backgroundColor = Color.White,
+               elevation = 0.dp,
+               modifier = Modifier.padding(vertical = 10.dp),
+               title = {
+                   Text(
+                       text = "Create an Account",
+                       color = Color.Black,
+                       fontSize = 32.sp,
+                       fontWeight = FontWeight.W700
+                   )
+               }, navigationIcon = {
+                   IconButton(onClick = {
+                       navController.navigateUp()
+                   }) {
+                       Icon(imageVector = Icons.Default.ArrowBack,
+                           contentDescription = "back space")
+                   }
+               })
 
-    ) {
-        Text(
-            text = "Create an Account",
-            color = Color.Black,
-            fontSize = 32.sp,
-            fontWeight = FontWeight.W700
-        )
-        Spacer(modifier = Modifier.height(60.dp))
-        Text(
-            text = "Username", color = Gray,
-            fontSize = 14.sp
-        )
+       }
 
 
-        Spacer(modifier = Modifier.height(10.dp))
+   ) {
+       var textUsername by remember { mutableStateOf("") }
+       var textEmail by remember { mutableStateOf("") }
+       var textPassword by remember {
+           mutableStateOf("")
+       }
 
-        CustomOutlinedTextField(
-            text = textUsername,
-            onValueChange = {
-                textUsername = it
-            },
-            placeHolder = "Your Username",
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Outlined.PersonOutline,
-                    contentDescription = "username"
-                )
-            },
-        )
+       Column(
+           horizontalAlignment = Alignment.Start,
+           modifier = Modifier
 
-        Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = "Email address", color = Gray,
-            fontSize = 14.sp
-        )
+               .padding(
+                   vertical = 20.dp,
+                   horizontal = 20.dp
+               )
 
+       ) {
 
-        Spacer(modifier = Modifier.height(10.dp))
-
-        CustomOutlinedTextField(
-            text = textEmail,
-            onValueChange = {
-                textEmail = it
-            },
-            placeHolder = "Your user email address",
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Outlined.Email,
-                    contentDescription = "email"
-                )
-            },
-            keyboardType = KeyboardType.Email
-        )
+           Text(
+               text = "Username", color = Gray,
+               fontSize = 14.sp
+           )
 
 
-        Spacer(modifier = Modifier.height(30.dp))
+           Spacer(modifier = Modifier.height(10.dp))
 
-        Text(
-            text = "Password", color = Gray,
-            fontSize = 14.sp
-        )
-        Spacer(modifier = Modifier.height(10.dp))
+           CustomOutlinedTextField(
+               text = textUsername,
+               onValueChange = {
+                   textUsername = it
+               },
+               placeHolder = "Your Username",
+               leadingIcon = {
+                   Icon(
+                       imageVector = Icons.Outlined.PersonOutline,
+                       contentDescription = "username"
+                   )
+               },
+           )
 
-
-        CustomOutlinedTextField(
-            text = textPassword,
-            onValueChange = {
-                textPassword = it
-            },
-            placeHolder = "Password",
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Outlined.Lock,
-                    contentDescription = "password"
-                )
-            },
-            keyboardType = KeyboardType.Password,
-            obscureText = true
-        )
+           Spacer(modifier = Modifier.height(30.dp))
+           Text(
+               text = "Email address", color = Gray,
+               fontSize = 14.sp
+           )
 
 
-        Spacer(modifier = Modifier.height(2.dp))
+           Spacer(modifier = Modifier.height(10.dp))
+
+           CustomOutlinedTextField(
+               text = textEmail,
+               onValueChange = {
+                   textEmail = it
+               },
+               placeHolder = "Your user email address",
+               leadingIcon = {
+                   Icon(
+                       imageVector = Icons.Outlined.Email,
+                       contentDescription = "email"
+                   )
+               },
+               keyboardType = KeyboardType.Email
+           )
+
+
+           Spacer(modifier = Modifier.height(30.dp))
+
+           Text(
+               text = "Password", color = Gray,
+               fontSize = 14.sp
+           )
+           Spacer(modifier = Modifier.height(10.dp))
+
+
+           CustomOutlinedTextField(
+               text = textPassword,
+               onValueChange = {
+                   textPassword = it
+               },
+               placeHolder = "Password",
+               leadingIcon = {
+                   Icon(
+                       imageVector = Icons.Outlined.Lock,
+                       contentDescription = "password"
+                   )
+               },
+               keyboardType = KeyboardType.Password,
+               obscureText = true
+           )
+
+
+           Spacer(modifier = Modifier.height(2.dp))
 
 
 
 
-        Spacer(modifier = Modifier.height(30.dp))
+           Spacer(modifier = Modifier.height(30.dp))
 
 
-        CustomFilledButton(text = "Sign Up",
-            onClick = {  })
+           CustomFilledButton(text = "Sign Up",
+               onClick = {  })
 
 
-        Spacer(modifier = Modifier.height(15.dp))
+           Spacer(modifier = Modifier.height(15.dp))
 
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+           Row(
+               horizontalArrangement = Arrangement.Center,
+               modifier = Modifier.fillMaxWidth()
 
-        ) {
-            Text(
-                text = "Or sign up with",
-                textAlign = TextAlign.Center,
-                color = Color(0xFF8C8C8C)
-            )
-        }
+           ) {
+               Text(
+                   text = "Or sign up with",
+                   textAlign = TextAlign.Center,
+                   color = Color(0xFF8C8C8C)
+               )
+           }
 
-        Spacer(modifier = Modifier.height(15.dp))
-        OutlinedButton(
-            onClick = { },
-            modifier = Modifier
-                .height(50.dp)
-                .fillMaxWidth(),
-            border = BorderStroke(1.dp, Color(0xFFDBDBDB)),
-            shape = RoundedCornerShape(3.dp)
+           Spacer(modifier = Modifier.height(15.dp))
+           OutlinedButton(
+               onClick = { },
+               modifier = Modifier
+                   .height(50.dp)
+                   .fillMaxWidth(),
+               border = BorderStroke(1.dp, Color(0xFFDBDBDB)),
+               shape = RoundedCornerShape(3.dp)
 
-        ) {
-            Icon(
-                imageVector = Icons.Default.Link,
-                contentDescription = "",
-                tint = Color.Black
+           ) {
+               Icon(
+                   imageVector = Icons.Default.Link,
+                   contentDescription = "",
+                   tint = Color.Black
 
-            )
+               )
 
-            Spacer(modifier = Modifier.width(5.dp))
-            Text("Connect Wallet", color = Color.Black)
+               Spacer(modifier = Modifier.width(5.dp))
+               Text("Connect Wallet", color = Color.Black)
 
-        }
-        
-        Spacer(modifier = Modifier.height(5.dp))
+           }
 
-        Row(
-            verticalAlignment = Alignment.Bottom,
+           Spacer(modifier = Modifier.height(5.dp))
 
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
+           Row(
+               verticalAlignment = Alignment.Bottom,
 
-            horizontalArrangement = Arrangement.Center
+               modifier = Modifier
+                   .fillMaxWidth()
+                   .fillMaxHeight(),
 
-        ) {
+               horizontalArrangement = Arrangement.Center
 
-            Text(text = "Already have an account ?", color = Color.Black)
-            Spacer(modifier = Modifier.width(5.dp))
-            Text(text = "Sign in",
-                color = Blue,
-                modifier = Modifier.clickable {
-                    navController.navigateUp()
-                }
+           ) {
 
-            )
+               Text(text = "Already have an account ?", color = Color.Black)
+               Spacer(modifier = Modifier.width(5.dp))
+               Text(text = "Sign in",
+                   color = Blue,
+                   modifier = Modifier.clickable {
+                       navController.navigateUp()
+                   }
 
-        }
+               )
+
+           }
 
 
-    }
+       }
+   }
 
 }
 

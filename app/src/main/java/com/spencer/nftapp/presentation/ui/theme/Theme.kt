@@ -13,7 +13,7 @@ private val DarkColorPalette = darkColors(
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
+    primary = Blue,
     primaryVariant = Purple700,
     secondary = Teal200
 
@@ -39,6 +39,6 @@ fun NFTAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable
         colors = colors,
         typography = Typography,
         shapes = Shapes,
-        content = content
+        content = content,
     )
 }
