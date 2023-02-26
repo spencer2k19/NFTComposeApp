@@ -20,6 +20,17 @@ object Register:NftDestination {
         get() = "register"
 }
 
+object ConfirmIdentity:NftDestination {
+    override val route: String
+        get() = "confirm_identity"
+}
+
+object VerifyIdentity:NftDestination {
+    override val route: String
+        get() = "verify_identity"
+}
+
+
 object ResetPassword:NftDestination {
     override val route: String
         get() = "reset_password"

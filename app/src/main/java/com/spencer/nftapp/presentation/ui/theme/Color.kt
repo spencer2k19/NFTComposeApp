@@ -10,3 +10,4 @@ val Blue = Color(0xFF2563EB)
 
 val Gray = Color(0xFF8C8C8C)
 val LegerBlue = Color(0xFFDBEAFE)
+val Normal = Color(140,140,140)
