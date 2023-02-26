@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.spencer.nftapp.presentation.components.CustomFilledButton
 import com.spencer.nftapp.presentation.components.CustomOutlinedTextField
 import com.spencer.nftapp.presentation.main.Register
+import com.spencer.nftapp.presentation.main.ResetPassword
 import com.spencer.nftapp.presentation.ui.theme.Blue
 import com.spencer.nftapp.presentation.ui.theme.Gray
 
@@ -43,14 +44,7 @@ fun LoginView(
                    fontSize = 32.sp,
                    fontWeight = FontWeight.W700
                )
-           }, navigationIcon = {
-               IconButton(onClick = {
-                   navController.navigateUp()
-               }) {
-                    Icon(imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "back space")
-               }
-               })
+           })
 
        }
    ) {
@@ -122,7 +116,9 @@ fun LoginView(
                modifier = Modifier.fillMaxWidth()
 
            ) {
-               TextButton(onClick = { }) {
+               TextButton(onClick = {
+                   navController.navigate(ResetPassword.route)
+               }) {
                    Text(
                        text = "Forgot Password?",
                        color = Blue,

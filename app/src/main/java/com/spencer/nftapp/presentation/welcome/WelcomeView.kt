@@ -30,6 +30,7 @@ import com.google.accompanist.pager.rememberPagerState
 import com.spencer.nftapp.R
 import com.spencer.nftapp.presentation.components.CustomFilledButton
 import com.spencer.nftapp.presentation.main.Login
+import com.spencer.nftapp.presentation.main.Welcome
 import com.spencer.nftapp.presentation.ui.theme.Blue
 import com.spencer.nftapp.presentation.ui.theme.Gray
 import com.spencer.nftapp.presentation.ui.theme.LegerBlue
@@ -139,7 +140,16 @@ fun WelcomeView(
                         if (state.currentPage < 2) {
                             state.scrollToPage(state.currentPage+1)
                         } else {
-                            navController.navigate(Login.route)
+                            navController.navigate(Login.route) {
+                                popUpTo(Welcome.route){
+                                    inclusive = true
+
+                                }
+
+
+                            }
+
+
                         }
 
                     }

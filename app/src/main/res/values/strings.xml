@@ -4,4 +4,11 @@
     <string name="verify_identity">Verify your identity</string>
     <string name="help_protect">To help you protect from fraud and identity theft, and to comply with federal regulations</string>
     <string name="enter_phone">Enter your phone number</string>
+    <string name="create_pin_code">Create your pin code</string>
+    <string name="pin_code_description">Create a 4-digit PIN code that will be used every time you login</string>
+    <string name="dont_receive_code">I dont receive code!</string>
+    <string name="resend_please">Resend Please</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_description">Your new password must be different from previous used password</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

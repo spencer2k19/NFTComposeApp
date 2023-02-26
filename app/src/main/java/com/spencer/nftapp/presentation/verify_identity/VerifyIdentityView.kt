@@ -27,6 +27,8 @@ import com.spencer.nftapp.presentation.components.BackButton
 import com.spencer.nftapp.presentation.components.CustomFilledButton
 import com.spencer.nftapp.presentation.components.CustomOutlinedTextField
 import com.spencer.nftapp.presentation.main.ConfirmIdentity
+import com.spencer.nftapp.presentation.main.CreatePinCode
+import com.spencer.nftapp.presentation.ui.theme.Normal
 
 @Composable
 fun VerifyIdentityView(navController: NavController? = null) {
@@ -57,7 +59,8 @@ fun VerifyIdentityView(navController: NavController? = null) {
 
             Text(text = "We're going to send you a verification code to confirm your identity",
                 fontSize = 14.sp,
-                fontWeight = FontWeight.W400
+                fontWeight = FontWeight.W400,
+                color = Normal
                 )
 
 
@@ -84,7 +87,7 @@ fun VerifyIdentityView(navController: NavController? = null) {
 
             CustomFilledButton(text = "Send Code",
                 onClick = {
-
+                    navController?.navigate(CreatePinCode.route)
                 })
 
 

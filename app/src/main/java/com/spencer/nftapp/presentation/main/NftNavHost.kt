@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.spencer.nftapp.presentation.choose_identity.ConfirmIdentityView
 import com.spencer.nftapp.presentation.login.LoginView
+import com.spencer.nftapp.presentation.register.CreatePinView
 import com.spencer.nftapp.presentation.register.RegisterView
 import com.spencer.nftapp.presentation.reset_password.ResetPasswordView
 import com.spencer.nftapp.presentation.verify_identity.VerifyIdentityView
@@ -45,6 +46,10 @@ fun NftNavHost(
 
         composable(VerifyIdentity.route) {
             VerifyIdentityView(navController)
+        }
+
+        composable(CreatePinCode.route) {
+            CreatePinView(navController)
         }
 
     }

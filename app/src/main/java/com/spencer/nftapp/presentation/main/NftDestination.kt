@@ -35,3 +35,9 @@ object ResetPassword:NftDestination {
     override val route: String
         get() = "reset_password"
 }
+
+
+object CreatePinCode:NftDestination {
+    override val route: String
+        get() = "create_pin_code"
+}
