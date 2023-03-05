@@ -1,6 +1,8 @@
 package com.spencer.nftapp.presentation.reset_password
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -46,7 +48,9 @@ fun ResetPasswordView(
     }) {
         Column(
             horizontalAlignment = Alignment.Start
-            ,modifier = Modifier.padding(vertical = 10.dp, horizontal = 20.dp)) {
+            ,modifier = Modifier
+            .verticalScroll(rememberScrollState())
+                .padding(vertical = 10.dp, horizontal = 20.dp)) {
             Text(text = stringResource(id = R.string.reset_password), fontSize = 24.sp,
                 fontWeight = FontWeight.W700
             )

@@ -3,7 +3,9 @@ package com.spencer.nftapp.presentation.register
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -71,7 +73,7 @@ fun RegisterView(
        Column(
            horizontalAlignment = Alignment.Start,
            modifier = Modifier
-
+               .verticalScroll(rememberScrollState())
                .padding(
                    vertical = 20.dp,
                    horizontal = 20.dp

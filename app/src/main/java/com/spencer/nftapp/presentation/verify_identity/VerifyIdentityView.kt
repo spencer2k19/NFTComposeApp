@@ -3,7 +3,9 @@ package com.spencer.nftapp.presentation.verify_identity
 import android.graphics.Paint.Align
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -31,7 +33,10 @@ import com.spencer.nftapp.presentation.main.CreatePinCode
 import com.spencer.nftapp.presentation.ui.theme.Normal
 
 @Composable
-fun VerifyIdentityView(navController: NavController? = null) {
+fun VerifyIdentityView(
+    navController: NavController? = null
+
+) {
     var phone by remember { mutableStateOf("") }
 
     Scaffold(topBar = {
@@ -50,7 +55,9 @@ fun VerifyIdentityView(navController: NavController? = null) {
     }) {
         Column(
             horizontalAlignment = Alignment.Start
-            ,modifier = Modifier.padding(vertical = 10.dp, horizontal = 20.dp)) {
+            ,modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(vertical = 10.dp, horizontal = 20.dp)) {
             Text(text = stringResource(id = R.string.enter_phone), fontSize = 24.sp,
             fontWeight = FontWeight.W700
                 )

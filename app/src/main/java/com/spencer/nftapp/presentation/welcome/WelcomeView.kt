@@ -6,6 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -62,6 +64,7 @@ fun WelcomeView(
         mutableStateOf(R.drawable.intro1)
     }
     Column(modifier = Modifier
+        .verticalScroll(rememberScrollState())
         .padding(horizontal = 15.dp,
             vertical = 15.dp,),
         horizontalAlignment = Alignment.CenterHorizontally
